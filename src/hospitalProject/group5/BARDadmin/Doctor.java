@@ -1,5 +1,8 @@
 package hospitalProject.group5.BARDadmin;
 
-public class DoctorServlet {
 
+public class Doctor {
+
+
+	
 }

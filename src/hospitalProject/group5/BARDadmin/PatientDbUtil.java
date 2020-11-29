@@ -1,40 +1,89 @@
 package hospitalProject.group5.BARDadmin;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
-public class PatientDb {
+import javax.sql.DataSource;
 
+public class PatientDbUtil {
+	//reference to the data source-swl
+		private DataSource dataSource;
 	
-	public ArrayList<Patient> getPatientsList()
-			throws SQLException, ClassNotFoundException {
-			
-			ArrayList<Patient> patientsList= new ArrayList<>();
-			
-			// Get Db connection
-			Connection connection = getConnection();
-			
-			// Create statement
-			Statement statement = connection.createStatement();
-			
-			// Execute statement
-			ResultSet resultSet = statement.executeQuery("select * from student");
+	//constructor to 
+	public PatientDbUtil(DataSource ds) {
+	dataSource = ds;   //the servlet will handle sending the reference to this ds object
+	}
 	
-	
-	//How to establish conection to the database
-	private Connection getConnection() 
-			throws SQLException, ClassNotFoundException {
+	public List<Patient> getPatients() throws Exception{
 		
-		Class.forName("");
+		List<Patient> patients = new ArrayList<>();
 		
-		// Connect to the database
-		Connection connection = DriverManager
-				.getConnection("");
+		//jdbc objects- set up database here
+		Connection myConn = null;
+		Statement myStatement = null;
+		ResultSet myResult = null;
 		
-		return connection;
+		try {
+			//get a connectuon to db
+			myConn = dataSource.getConnection();
+			
+			// create sql stetemtn 
+			String sql = "select * from _patient order by last_name";
+			
+			myStatement = myConn.createStatement();
+			
+			//execute query
+			myResult = myStatement.executeQuery(sql);
+			
+			//process result set
+			while(myResult.next()) {
+				//retrieve data
+				
+				String firstName = myResult.getString("first_name");
+				String emailAddress = myResult.getString("email");
+				int id = myResult.getInt("id");
+				String lastName = myResult.getString("last_name");
+
+				//new patient object
+				Patient tempPatient = new Patient(id, firstName, lastName, emailAddress);
+				//add it to the list of patients
+				patients.add(tempPatient);
+			}
+			
+			return patients;
+		}
+		finally {
+			//close JDBC objects
+			close(myConn,myStatement,myResult);	
+		}
+	}
+
+	private void close(Connection myConn, Statement myStatement, ResultSet myResult) {
+		
+		try {
+			if(myResult != null) {
+				myResult.close();
+			}
+			
+			if(myStatement != null) {
+				myStatement.close();
+			}
+			
+			if(myConn != null) {
+				myConn.close();
+			}
+			
+		}
+		catch(Exception exc) {
+			exc.printStackTrace();
+			
+		}
 	}
 }
+
+
+

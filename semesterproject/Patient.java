@@ -11,39 +11,35 @@ package semesterproject;
  */
 public class Patient {
     
-    private static int numOfPatients = 0;
-    
     private int id = 0,
-            age = 0,
-            bpSys = 0,
-            bpDia =0;
+            age = 0;
+    
+    private long  phone_number;
             
     
     public double
             height = 0.0,
             weight = 0.0,
-            temp = 0.0,
-            pulse = 0.0,
-            sats = 0.0;
+            temp = 0.0;
            
-    private String firstName = "",
-            lastName = "",
+    private String first_name = "",
+            last_name = "",
             gender = "",
-            email = "";
+            email = "",
+            bp = "";
     
     
     public Patient(){
-        setNumOfPatients();
+        
     }
     
     public Patient(int id, int age, String firstName, String lastName, String gender, String email){
         this.id = id;
         this.age = age;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.first_name = firstName;
+        this.last_name = lastName;
         this.gender = gender;
         this.email = email;
-        setNumOfPatients();
     }
     
     
@@ -63,20 +59,20 @@ public class Patient {
         this.age = age;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getGender() {
@@ -94,23 +90,23 @@ public class Patient {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public long getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(long phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public String getBp() {
+        return bp;
+    }
+
+    public void setBp(String bp) {
+        this.bp = bp;
+    }
     
-    public int getBpSys() {
-        return bpSys;
-    }
-
-    public void setBpSys(int bpSys) {
-        this.bpSys = bpSys;
-    }
-
-    public int getBpDia() {
-        return bpDia;
-    }
-
-    public void setBpDia(int bpDia) {
-        this.bpDia = bpDia;
-    }
-
     public double getHeight() {
         return height;
     }
@@ -134,37 +130,13 @@ public class Patient {
     public void setTemp(double temp) {
         this.temp = temp;
     }
-
-    public double getPulse() {
-        return pulse;
-    }
-
-    public void setPulse(double pulse) {
-        this.pulse = pulse;
-    }
-
-    public double getSats() {
-        return sats;
-    }
-
-    public void setSats(double sats) {
-        this.sats = sats;
-    }
-
-    public int getNumOfPatients() {
-        return numOfPatients;
-    }
-
-    private void setNumOfPatients() {
-        this.numOfPatients = numOfPatients + 1;
-    }
     
     
     public String toString(){
         return "Patient Data\n"+
                "ID:" + id + 
-               "\nFirst Name: " + firstName + 
-               "\nLast Name: " + lastName + 
+               "\nFirst Name: " + first_name + 
+               "\nLast Name: " + last_name + 
                "\nAge: " + age + 
                "\nGender: " + gender + 
                "\nEmail: " + email;

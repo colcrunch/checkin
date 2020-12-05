@@ -14,13 +14,14 @@ import java.time.LocalDateTime;
 public class Admission {
     private int
             id,
-            patient,
-            appointment,
+            patient_id,
+            appointment_id,
             room,
-            bed,
-            discharge;
-    private String adm_notes;
-    private LocalDateTime adm_date;
+            bed;
+    private String doctor,
+            dsc_notes;
+    private LocalDateTime adm_date,
+            dsc_date;
     private boolean discharged;
     
     public Admission(){
@@ -35,20 +36,20 @@ public class Admission {
         this.id = id;
     }
 
-    public int getPatient() {
-        return patient;
+    public int getPatient_id() {
+        return patient_id;
     }
 
-    public void setPatient(int patient) {
-        this.patient = patient;
+    public void setPatient_id(int patient_id) {
+        this.patient_id = patient_id;
     }
 
-    public int getAppointment() {
-        return appointment;
+    public int getAppointment_id() {
+        return appointment_id;
     }
 
-    public void setAppointment(int appointment) {
-        this.appointment = appointment;
+    public void setAppointment_id(int appointment_id) {
+        this.appointment_id = appointment_id;
     }
 
     public int getRoom() {
@@ -67,28 +68,36 @@ public class Admission {
         this.bed = bed;
     }
 
-    public int getDischarge() {
-        return discharge;
-    }
-
-    public void setDischarge(int discharge) {
-        this.discharge = discharge;
-    }
-
-    public String getAdm_notes() {
-        return adm_notes;
-    }
-
-    public void setAdm_notes(String adm_notes) {
-        this.adm_notes = adm_notes;
-    }
-
     public LocalDateTime getAdm_date() {
         return adm_date;
     }
 
     public void setAdm_date(LocalDateTime adm_date) {
         this.adm_date = adm_date;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
+    }
+
+    public String getDsc_notes() {
+        return dsc_notes;
+    }
+
+    public void setDsc_notes(String dsc_notes) {
+        this.dsc_notes = dsc_notes;
+    }
+
+    public LocalDateTime getDsc_date() {
+        return dsc_date;
+    }
+
+    public void setDsc_date(LocalDateTime dsc_date) {
+        this.dsc_date = dsc_date;
     }
 
     public boolean isDischarged() {

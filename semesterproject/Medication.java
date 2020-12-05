@@ -10,9 +10,9 @@ package semesterproject;
  * @author dante
  */
 public class Medication {
-    private int id;
-    private Patient patient;
-    private String prescriptionName;
+    private int id,
+            patient_id;
+    private String name;
     private double dosage;
     
     public Medication(){
@@ -31,20 +31,20 @@ public class Medication {
         this.id = id;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public int getPatient_id() {
+        return patient_id;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatient_id(int patient_id) {
+        this.patient_id = patient_id;
     }
 
-    public String getPrescriptionName() {
-        return prescriptionName;
+    public String getName() {
+        return name;
     }
 
-    public void setPrescriptionName(String prescriptionName) {
-        this.prescriptionName = prescriptionName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getDosage() {
@@ -59,8 +59,7 @@ public class Medication {
     public String toString(){
         return
                 "ID: " + id
-                + "\nPatient: " + patient.getFirstName() + " " + patient.getLastName()
-                + "\nPrescription: " + prescriptionName
+                + "\nPrescription: " + name
                 + "\nDosage: " + dosage;
     }
 }

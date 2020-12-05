@@ -5,28 +5,31 @@
  */
 package semesterproject;
 
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-
+import java.time.LocalDateTime;
 
 /**
  *
  * @author dante
  */
-public class Appointment {
-    private int id;
-    private Doctor doctorInfo;
-    private Patient patientInfo;
-    private LocalDateTime date,
-            checkInTime;
+class Appointment {
+    private int id,
+            patient_id;
+    
+    private String doctor,
+            note;
+    
+    private LocalDateTime date_time,
+            check_time;
+    
     private boolean checked;
+    
     
     public Appointment(){
         
     }
     
-    public Appointment(int ID){
-        this.id = ID;        
+    public Appointment(int patientId){
+        this.patient_id = patientId;
     }
 
     public int getId() {
@@ -37,28 +40,44 @@ public class Appointment {
         this.id = id;
     }
 
-    public Doctor getDoctorInfo() {
-        return doctorInfo;
+    public int getPatient_id() {
+        return patient_id;
     }
 
-    public void setDoctorInfo(Doctor doctorInfo) {
-        this.doctorInfo = doctorInfo;
+    public void setPatient_id(int patient_id) {
+        this.patient_id = patient_id;
     }
 
-    public Patient getPatientInfo() {
-        return patientInfo;
+    public String getDoctor() {
+        return doctor;
     }
 
-    public void setPatientInfo(Patient patientInfo) {
-        this.patientInfo = patientInfo;
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public String getNote() {
+        return note;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public LocalDateTime getDate_time() {
+        return date_time;
+    }
+
+    public void setDate_time(LocalDateTime date_time) {
+        this.date_time = date_time;
+    }
+
+    public LocalDateTime getCheck_time() {
+        return check_time;
+    }
+
+    public void setCheck_time(LocalDateTime check_time) {
+        this.check_time = check_time;
     }
 
     public boolean isChecked() {
@@ -68,23 +87,6 @@ public class Appointment {
     public void setChecked(boolean checked) {
         this.checked = checked;
     }
-
-    public LocalDateTime getCheckInTime() {
-        return checkInTime;
-    }
-
-    public void setCheckInTime(LocalDateTime checkInTime) {
-        this.checkInTime = checkInTime;
-    }    
     
-    public String toString(){
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("E, MMM dd yyyy HH:mm:ss");
-        String currentTime = date.format(myFormatObj);
-        
-        return
-                "ID: " + id
-                +"\nPatient: " +patientInfo.getFirstName() + " " + patientInfo.getLastName()
-                +"\nDoctor: " + doctorInfo.getFirstName() + " " + doctorInfo.getLastName()
-                +"\nAppointment date: " + currentTime;
-    }
+    
 }
